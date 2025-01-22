@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +17,16 @@ import com.Manav.Journal.Application.repo.UserRepo;
 @Service
 public class JournalService {
 
-    @Autowired
-    private JournalRepo repo;
+    
+    private final JournalRepo repo;
+    private  final UserRepo userRepo;
+    public JournalService(JournalRepo repo, UserRepo userRepo){
+        this.repo = repo;
+        this.userRepo = userRepo;
+    }
 
-    @Autowired 
-    private  UserRepo userRepo;
+    
+  
 
   
     public JournalEntry saveEntry(JournalEntry entry){
